@@ -1,18 +1,36 @@
+import { registerLocaleData } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import ru from '@angular/common/locales/ru';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { NZ_I18N, ru_RU } from 'ng-zorro-antd/i18n';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { FoldersComponent } from './components/folders/folders.component';
+import { CreateModalComponent } from './components/modal/create-modal.component';
+import { LayoutComponent } from './layout/layout.component';
+import { LayoutModule } from './layout/layout.module';
+import { AntdModule } from './modules/antd/antd.module';
+import { FoldersPageComponent } from './pages/folders.page/folders.page.component';
+
+registerLocaleData(ru);
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [FoldersPageComponent, FoldersComponent, CreateModalComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AntdModule,
+    LayoutModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{ provide: NZ_I18N, useValue: ru_RU }],
+  exports: [FoldersPageComponent],
+  bootstrap: [LayoutComponent]
 })
-export class AppModule { }
+export class AppModule {}

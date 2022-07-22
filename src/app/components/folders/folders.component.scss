@@ -1,0 +1,14 @@
+.folders {
+  display: flex;
+  &__buttons{
+    button {
+      margin-top: 10px;
+    }
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px;
+  }
+  i {
+    margin-left: 5px
+  }
+}
