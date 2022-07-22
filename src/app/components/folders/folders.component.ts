@@ -1,11 +1,13 @@
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 import { NzTreeFlatDataSource, NzTreeFlattener } from 'ng-zorro-antd/tree-view';
 
 import { FlatNode, TreeNode } from '../../shared/models/ant.models';
 import { IFolder } from '../../shared/models/folder.interface';
 import { FoldersServices } from '../../shared/services/folders.services';
+import { CreateModalComponent } from '../modal/create-modal.component';
 
 @Component({
   selector: 'sibintek-folders',
@@ -14,7 +16,7 @@ import { FoldersServices } from '../../shared/services/folders.services';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FoldersComponent implements AfterViewInit, OnInit {
-  constructor(public foldersService: FoldersServices) {}
+  constructor(public foldersService: FoldersServices, private _matDialog: MatDialog) {}
   TREE_DATA: IFolder[] = [];
 
   ngOnInit(): void {
@@ -27,12 +29,42 @@ export class FoldersComponent implements AfterViewInit, OnInit {
     this.treeControl.expandAll();
   }
 
-  deleteFolder(node: FlatNode): void {
-    this.treeControl.collapse(node);
+  setDataToTree(): void {
+    this.treeControl.collapseAll();
     setTimeout(() => {
-      this.foldersService.deleteFolder(node.id);
       this.dataSource.setData(this.TREE_DATA as TreeNode[]);
+      setTimeout(() => {
+        this.treeControl.expandAll();
+      }, 500);
     }, 500);
+  }
+
+  deleteFolder(node: FlatNode): void {
+    this.foldersService.deleteFolder(node.id);
+    this.setDataToTree();
+  }
+
+  createFolder(): void {
+    this._matDialog.open(CreateModalComponent, {
+      data: {
+        title: 'Папку',
+        setDataToTree: this.setDataToTree.bind(this)
+      }
+    });
+  }
+
+  createItem(): void {
+    this._matDialog.open(CreateModalComponent, {
+      data: {
+        title: 'Объект',
+        setDataToTree: this.setDataToTree.bind(this)
+      }
+    });
+  }
+
+  deleteItem(id: string): void {
+    this.foldersService.deleteItem(id);
+    this.setDataToTree();
   }
 
   private transformer = (node: TreeNode, level: number): FlatNode => ({

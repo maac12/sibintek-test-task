@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import ru from '@angular/common/locales/ru';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -27,7 +28,8 @@ registerLocaleData(ru);
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [{ provide: NZ_I18N, useValue: ru_RU }],
   exports: [FoldersPageComponent],

@@ -1,9 +1,9 @@
 <div class="folders">
   <div class="folders__buttons">
-    <button nz-button nzType="primary"
+    <button (click)="createFolder()" nz-button nzType="primary"
       ><i nz-icon nzType="folder-add" nzTheme="outline"></i>Добавить Папку</button
     >
-    <button nz-button nzType="primary">
+    <button (click)="createItem()" nz-button nzType="primary">
       <i nz-icon nzType="snippets" nzTheme="outline"></i>Добавить Объект
     </button>
   </div>
@@ -15,6 +15,14 @@
       </nz-tree-node-toggle>
       <nz-tree-node-option>
         {{ node.name }}
+        <i
+          (click)="deleteItem(node.id)"
+          *ngIf="node.name !== 'Пустая папка...'"
+          [ngStyle]="{ 'font-size': '10px', color: 'red' }"
+          nz-icon
+          nzType="close"
+          nzTheme="outline"
+        ></i>
       </nz-tree-node-option>
     </nz-tree-node>
 

@@ -4,11 +4,17 @@ export const mockData: IFolder[] = [
   {
     id: '112313',
     name: 'Папка 3',
-    children: [{ name: 'док1' }, { name: 'док2' }]
+    children: [
+      { id: '11', name: 'док1' },
+      { id: '12', name: 'док2' }
+    ]
   },
   {
     id: 'adfa123',
     name: 'Папка 5',
-    children: [{ name: 'док4' }, { name: 'док4' }]
+    children: [
+      { id: '13', name: 'док4' },
+      { id: '14', name: 'док4' }
+    ]
   }
 ];
