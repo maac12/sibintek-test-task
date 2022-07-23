@@ -1,0 +1,28 @@
+<div class="badge__container">
+  <nz-badge
+    [nzStyle]="{
+      backgroundColor: 'rgba(92,84,210,0.25)',
+      color: '#020202',
+      boxShadow: '0 0 0 1px #d9d9d9 inset'
+    }"
+    [nzCount]="countFolder"
+  >
+    <i nz-icon [ngStyle]="{ 'font-size': '20px' }" nzType="folder-open" nzTheme="outline"></i>
+  </nz-badge>
+
+  <nz-badge
+    [nzStyle]="{
+      backgroundColor: 'rgba(92,84,210,0.25)',
+      color: '#020202',
+      boxShadow: '0 0 0 1px #d9d9d9 inset'
+    }"
+    [nzCount]="countItem"
+  >
+    <i
+      nz-icon
+      [ngStyle]="{ 'font-size': '20px', 'margin-left': '15px' }"
+      nzType="unordered-list"
+      nzTheme="outline"
+    ></i>
+  </nz-badge>
+</div>
