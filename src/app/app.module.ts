@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FoldersComponent } from './components/folders/folders.component';
 import { CreateFolderModalComponent } from './components/modal/create-folder/create-folder.component';
 import { CreateItemModalComponent } from './components/modal/create-item/create-item.component';
+import { EditItemComponent } from './components/modal/edit-item/edit-item.component';
 import { LayoutComponent } from './layout/layout.component';
 import { LayoutModule } from './layout/layout.module';
 import { AntdModule } from './modules/antd/antd.module';
@@ -25,7 +26,8 @@ registerLocaleData(ru);
     FoldersPageComponent,
     FoldersComponent,
     CreateFolderModalComponent,
-    CreateItemModalComponent
+    CreateItemModalComponent,
+    EditItemComponent
   ],
   imports: [
     BrowserModule,

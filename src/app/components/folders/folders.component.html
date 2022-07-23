@@ -13,7 +13,7 @@
       <nz-tree-node-toggle nzTreeNodeNoopToggle>
         <i nz-icon nzType="file" nzTheme="outline"></i>
       </nz-tree-node-toggle>
-      <nz-tree-node-option>
+      <nz-tree-node-option (click)="editItem(node)">
         {{ node.name }}
         <i
           (click)="deleteItem(node.id)"

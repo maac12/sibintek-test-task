@@ -4,7 +4,7 @@ export interface IFolder {
   children: Item[];
 }
 
-interface Item {
-  id?: string | number;
+export interface Item {
+  id?: string;
   name: string;
 }

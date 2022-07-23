@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { nanoid } from 'nanoid/non-secure';
 
 import { mockData } from '../../mock-data/data';
-import { IFolder } from '../models/folder.interface';
+import { IFolder, Item } from '../models/folder.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -71,7 +71,43 @@ export class FoldersServices {
     this.folders.next(currentValue);
   }
 
+  updateItem(id: string, name: string, newFolderId: string): void {
+    let currentValue: IFolder[] = [];
+    this.folders.subscribe(data => (currentValue = data));
+    let newItemValue: Item;
+    currentValue.map(folder => {
+      folder.children.map(children => {
+        if (children.id === id) {
+          return (newItemValue = { ...children, name });
+        }
+        return;
+      });
+    });
+    this.deleteItem(id);
+    this.folders.subscribe(data => (currentValue = data));
+    currentValue = currentValue.map(folder => {
+      if (folder.id === newFolderId) {
+        if (!folder.children.filter(item => item.id).length) {
+          folder.children = [];
+        }
+        folder.children.push(newItemValue);
+      }
+      return folder;
+    });
+    this.folders.next(currentValue);
+  }
+
   get folders$(): Observable<IFolder[]> {
     return this.folders.asObservable();
+  }
+
+  getFolderOfSelectItem(id: string | undefined): IFolder {
+    if (!id) console.log('Папка не найдена');
+    let currentValue: IFolder[] = [];
+    this.folders.subscribe(data => (currentValue = data));
+    let folder = currentValue.filter(
+      folder => folder.children.filter(item => item.id === id).length
+    );
+    return folder[0];
   }
 }

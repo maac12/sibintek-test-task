@@ -9,6 +9,7 @@ import { IFolder } from '../../shared/models/folder.interface';
 import { FoldersServices } from '../../shared/services/folders.services';
 import { CreateFolderModalComponent } from '../modal/create-folder/create-folder.component';
 import { CreateItemModalComponent } from '../modal/create-item/create-item.component';
+import { EditItemComponent } from '../modal/edit-item/edit-item.component';
 
 @Component({
   selector: 'sibintek-folders',
@@ -48,7 +49,6 @@ export class FoldersComponent implements AfterViewInit, OnInit {
   createFolder(): void {
     this._matDialog.open(CreateFolderModalComponent, {
       data: {
-        title: 'Папку',
         setDataToTree: this.setDataToTree.bind(this)
       }
     });
@@ -57,7 +57,6 @@ export class FoldersComponent implements AfterViewInit, OnInit {
   createItem(): void {
     this._matDialog.open(CreateItemModalComponent, {
       data: {
-        title: 'Объект',
         setDataToTree: this.setDataToTree.bind(this)
       }
     });
@@ -66,6 +65,15 @@ export class FoldersComponent implements AfterViewInit, OnInit {
   deleteItem(id: string): void {
     this.foldersService.deleteItem(id);
     this.setDataToTree();
+  }
+
+  editItem(item: FlatNode): void {
+    this._matDialog.open(EditItemComponent, {
+      data: {
+        item: item,
+        setDataToTree: this.setDataToTree.bind(this)
+      }
+    });
   }
 
   private transformer = (node: TreeNode, level: number): FlatNode => ({
