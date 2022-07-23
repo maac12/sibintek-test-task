@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
+import { nanoid } from 'nanoid/non-secure';
+
 import { mockData } from '../../mock-data/data';
 import { IFolder } from '../models/folder.interface';
 
@@ -20,7 +22,7 @@ export class FoldersServices {
     currentValue = [
       ...currentValue,
       {
-        id: '2131231',
+        id: nanoid(),
         name,
         children: [{ name: 'Пустая папка...' }]
       }
@@ -42,7 +44,7 @@ export class FoldersServices {
       if (folder.id === idFolder) {
         if (folder.children.length === 1) folder.children = [];
         folder.children.push({
-          id: 'dfdsfsdf',
+          id: nanoid(),
           name
         });
       }

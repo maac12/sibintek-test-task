@@ -1,0 +1,36 @@
+.content {
+  width: 400px;
+  height: 100px;
+
+  input {
+    margin-bottom: 10px;
+  }
+
+  .validation {
+    color: #d31717;
+    margin-top: -10px;
+  }
+
+  .error {
+    border-color: #d31717;
+  }
+
+
+  .content_selectFolder {
+    width: 100%;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+
+  button:first-child {
+    margin-right: 10px;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+}

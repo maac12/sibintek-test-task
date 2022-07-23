@@ -1,0 +1,33 @@
+<h2 mat-dialog-title class="header">Добавить Объект</h2>
+<mat-dialog-content class="content">
+  <form [formGroup]="form">
+    <input
+      [ngClass]="{ error: form.get('name')?.invalid && form.get('name')?.touched }"
+      formControlName="name"
+      nz-input
+      placeholder="Введите пожалуйста название Объекта "
+    />
+    <div class="validation" *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+      <small *ngIf="form.get('name')?.errors?.required">название папки не может быть пустым</small>
+    </div>
+    <nz-select
+      class="content_selectFolder"
+      nzShowSearch
+      nzAllowClear
+      nzPlaceHolder="В какую папку добавить объект"
+      formControlName="folderId"
+    >
+      <nz-option
+        *ngFor="let folder of foldersService.folders$ | async"
+        [nzLabel]="folder.name"
+        [nzValue]="folder.id"
+      ></nz-option>
+    </nz-select>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions class="footer">
+  <button (click)="close()" nz-button nzType="default">Отмена</button>
+  <button [disabled]="form.invalid" (click)="create()" nz-button nzType="primary"
+    >Добавить Объект</button
+  >
+</mat-dialog-actions>

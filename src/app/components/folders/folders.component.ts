@@ -7,7 +7,8 @@ import { NzTreeFlatDataSource, NzTreeFlattener } from 'ng-zorro-antd/tree-view';
 import { FlatNode, TreeNode } from '../../shared/models/ant.models';
 import { IFolder } from '../../shared/models/folder.interface';
 import { FoldersServices } from '../../shared/services/folders.services';
-import { CreateModalComponent } from '../modal/create-modal.component';
+import { CreateFolderModalComponent } from '../modal/create-folder/create-folder.component';
+import { CreateItemModalComponent } from '../modal/create-item/create-item.component';
 
 @Component({
   selector: 'sibintek-folders',
@@ -45,7 +46,7 @@ export class FoldersComponent implements AfterViewInit, OnInit {
   }
 
   createFolder(): void {
-    this._matDialog.open(CreateModalComponent, {
+    this._matDialog.open(CreateFolderModalComponent, {
       data: {
         title: 'Папку',
         setDataToTree: this.setDataToTree.bind(this)
@@ -54,7 +55,7 @@ export class FoldersComponent implements AfterViewInit, OnInit {
   }
 
   createItem(): void {
-    this._matDialog.open(CreateModalComponent, {
+    this._matDialog.open(CreateItemModalComponent, {
       data: {
         title: 'Объект',
         setDataToTree: this.setDataToTree.bind(this)

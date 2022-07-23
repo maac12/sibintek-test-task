@@ -1,0 +1,20 @@
+<h2 mat-dialog-title class="header">Добавить Папку</h2>
+<mat-dialog-content class="content">
+  <form [formGroup]="form">
+    <input
+      [ngClass]="{ error: form.get('name')?.invalid && form.get('name')?.touched }"
+      formControlName="name"
+      nz-input
+      placeholder="Введите пожалуйста название папки"
+    />
+    <div class="validation" *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+      <small *ngIf="form.get('name')?.errors?.required">название папки не может быть пустым</small>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions class="footer">
+  <button (click)="close()" nz-button nzType="default">Отмена</button>
+  <button [disabled]="form.invalid" (click)="create()" nz-button nzType="primary"
+    >Добавить Папку</button
+  >
+</mat-dialog-actions>
