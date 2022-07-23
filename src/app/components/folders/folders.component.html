@@ -13,7 +13,10 @@
       <nz-tree-node-toggle nzTreeNodeNoopToggle>
         <i nz-icon nzType="file" nzTheme="outline"></i>
       </nz-tree-node-toggle>
-      <nz-tree-node-option (click)="editItem(node)">
+      <nz-tree-node-option
+        [nzDisabled]="node.name === 'Пустая папка...'"
+        (click)="node.name !== 'Пустая папка...' ? editItem(node) : ''"
+      >
         {{ node.name }}
         <i
           (click)="deleteItem(node.id)"

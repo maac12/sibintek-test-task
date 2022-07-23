@@ -42,7 +42,8 @@ export class FoldersServices {
     this.folders.subscribe(data => (currentValue = data));
     currentValue = currentValue.map(folder => {
       if (folder.id === idFolder) {
-        if (folder.children.length === 1) folder.children = [];
+        //For delete blank folder name
+        if (!folder.children.filter(item => item.id).length) folder.children = [];
         folder.children.push({
           id: nanoid(),
           name
@@ -87,6 +88,7 @@ export class FoldersServices {
     this.folders.subscribe(data => (currentValue = data));
     currentValue = currentValue.map(folder => {
       if (folder.id === newFolderId) {
+        //For delete blank folder name
         if (!folder.children.filter(item => item.id).length) {
           folder.children = [];
         }

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, Optional } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit, Optional } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
@@ -9,7 +9,8 @@ import { CreateItemModalComponent } from '../create-item/create-item.component';
 @Component({
   selector: 'sibintek-edit-item-modal',
   templateUrl: 'edit-item.component.html',
-  styleUrls: ['edit-item.component.scss']
+  styleUrls: ['edit-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EditItemComponent implements OnInit {
   form: FormGroup;
@@ -45,6 +46,12 @@ export class EditItemComponent implements OnInit {
       this.form.value.name,
       this.form.value.folderId
     );
+    this.data.setDataToTree();
+    this.matDialogRef.close();
+  }
+
+  delete(): void {
+    if (this.data.item.id) this.foldersService.deleteItem(this.data.item.id);
     this.data.setDataToTree();
     this.matDialogRef.close();
   }

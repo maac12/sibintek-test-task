@@ -27,6 +27,7 @@
 </mat-dialog-content>
 <mat-dialog-actions class="footer">
   <button (click)="close()" nz-button nzType="default">Отмена</button>
+  <button (click)="delete()" nz-button nzType="default">Удалить</button>
   <button [disabled]="form.invalid" (click)="edit()" nz-button nzType="primary"
     >Изменить Объект</button
   >

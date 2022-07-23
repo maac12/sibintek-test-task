@@ -4,8 +4,7 @@ import { FoldersServices } from '../../shared/services/folders.services';
 
 @Component({
   selector: 'sibintek-counter',
-  templateUrl: 'counter.component.html',
-  styleUrls: ['counter.component.scss']
+  templateUrl: 'counter.component.html'
 })
 export class CounterComponent implements OnInit {
   countFolder = 0;

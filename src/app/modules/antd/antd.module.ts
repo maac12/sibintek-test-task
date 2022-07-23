@@ -33,6 +33,7 @@ import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzTagModule } from 'ng-zorro-antd/tag';
+import { NzTimelineModule } from 'ng-zorro-antd/timeline';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzTreeViewModule } from 'ng-zorro-antd/tree-view';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
@@ -78,7 +79,8 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
     NzTreeViewModule,
     NzGridModule,
     NzToolTipModule,
-    NzBadgeModule
+    NzBadgeModule,
+    NzTimelineModule
   ]
 })
 export class AntdModule {}

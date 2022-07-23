@@ -32,6 +32,7 @@ export class FoldersComponent implements AfterViewInit, OnInit {
   }
 
   setDataToTree(): void {
+    //Se timeout for smooth animation
     this.treeControl.collapseAll();
     setTimeout(() => {
       this.dataSource.setData(this.TREE_DATA as TreeNode[]);

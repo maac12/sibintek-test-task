@@ -5,7 +5,7 @@
       [ngClass]="{ error: form.get('name')?.invalid && form.get('name')?.touched }"
       formControlName="name"
       nz-input
-      placeholder="Введите пожалуйста название Объекта "
+      placeholder="Введите пожалуйста название объекта "
     />
     <div class="validation" *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
       <small *ngIf="form.get('name')?.errors?.required">название папки не может быть пустым</small>
